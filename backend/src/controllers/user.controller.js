@@ -1,74 +1,61 @@
 import httpStatus from "http-status";
-import {User} from "../models/user.model.js";
-import bcrypt , {hash} from "bcrypt";
+import {User} from "../models/user.model.js"
+import bcrypt, {hash} from "bcrypt";
+import crypto from "crypto";
 
-import crypto from "crypto"
 
-// POST /auth/login
- const login = async (req, res) => {
-  try {
-    const { username, password } = req.body || {};
-
-    if (!username || !password) {
-      return res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ message: "username and password are required" });
+const login = async (req,res) => {
+    const {username, password}= req.body;
+    if(!username || !password){
+        return res.status(400).json({message: "Please Provide"})
     }
+    try{
+        const user = await User.findOne({username});
+        if(!user) {
+            return res.status(httpStatus.NOT_FOUND).json({message: "User Not Found"})
+        }
 
-    const user = await User.findOne({ username });
-    // Use a generic message to avoid user enumeration
-    if (!user) {
-      return res
-        .status(httpStatus.UNAUTHORIZED)
-        .json({ message: "Invalid credentials" });
+        let isPasswordCorrect = await bcrypt.compare(password, user.password)
+        if(isPasswordCorrect){
+            let token = crypto.randomBytes(20).toString("hex");
+            user.token = token;
+            await user.save();
+            return res.status(httpStatus.OK).json({token: token})
+        }else {
+            return res.status(httpStatus.UNAUTHORIZED).json({message: "Invalid UserName or Passeord"})
+        }
+    }catch (e){
+        return res.status(500).json({message: `Somthing went wrng ${e}`})
+
     }
+}
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res
-        .status(httpStatus.UNAUTHORIZED)
-        .json({ message: "Invalid credentials" });
+
+const register = async (req,res)=>{
+    const {name, username, password} = req.body;
+    try{
+        const existingUser = await User.findOne({username});
+        if (existingUser){
+            return res.status(httpStatus.FOUND).json({message: "user already exists"});
     }
-
-    // Simple random token (consider JWT instead)
-    const token = crypto.randomBytes(32).toString("hex");
-    user.token = token; // make sure your schema has `token: String`
-    await user.save();
-
-    return res.status(httpStatus.OK).json({ token });
-  } catch (e) {
-    return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ message: `Something went wrong: ${e.message}` });
-  }
-};
-
-
-const register = async (req, res) => {
-    const {name, username, password } = req.body;
-
-try {
-    const existingUser = await User.findOne({username});
-    if (existingUser) {
-        return res.status(httpStatus.FOUND).json({message: "Username already exists"});
-    }
-
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
-        name: name,
+        name:name,
         username: username,
         password: hashedPassword
+    
     });
 
     await newUser.save();
 
-    res.status(httpStatus.CREATED).json({message: "User registered "})
+    res.status(httpStatus.CREATED).json({message: "user registered"})
 
 } catch (e){
-    res.json({message: `Something went wrong ${e.message}`});
-}
+    res.json({message: "Something Went Worng"})
 
 }
+};
 
 export {login, register};
