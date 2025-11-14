@@ -19,6 +19,8 @@ export const connectTosocket = (server) => {
 
     io.on("connection", (socket) => {
 
+        console.log("SOMTHING CONNECTED")
+
         
 
          socket.on("join-call", (path) => {
@@ -32,7 +34,7 @@ export const connectTosocket = (server) => {
 
         
 
-            for(let a = 0; a < connections[path].length; i++) {
+            for(let a = 0; a < connections[path].length; a++) {
                 io.to(connections[path][a]).emit("user-joined", socket.id ,connections[path])
 
             }
