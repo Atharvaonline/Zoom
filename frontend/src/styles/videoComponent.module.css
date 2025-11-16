@@ -20,7 +20,13 @@
     text-align: center;
 }
 
-.buttonContainer > button
+.buttonContainer svg {
+    height: 7vh;
+    width: auto;
+    margin: 0 2vw;
+    cursor: pointer;
+    fill: white;
+}
 
 .conferenceView {
 
