@@ -1,33 +1,31 @@
-.meetVideoContainer {
+.meetVideoContainer{
     position: relative;
     height: 100vh;
-    background: rgb(1, 4, 48);
+    background: rgb(213, 89, 0);
 }
 
-.meetVideoContainer > .meetuservideo {
-    position: absolute ;
+.meetUserVideo {
+    position: absolute;
     bottom: 10vh;
     height: 20vh;
     width: auto;
     right: 0;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-.buttonContainer {
-    positions: absolute;
-    width: 100vw;
+.buttonContainers{
+    position: absolute;
+    width: 100vh;
     bottom: 0;
     text-align: center;
+
 }
 
-.buttonContainer svg {
-    height: 7vh;
-    width: auto;
-    margin: 0 2vw;
-    cursor: pointer;
-    fill: white;
+.buttonContainers svg{
+    font-size: 4.5rem;
+
 }
 
-.conferenceView {
+.conferenceView{
 
 }
