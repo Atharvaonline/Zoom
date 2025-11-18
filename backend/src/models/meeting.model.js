@@ -1,7 +1,7 @@
-import mongoose, {schema} from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
 
-const meetingSchema = new schema(
+const meetingSchema = new Schema(
     {
     user_id: {type:String},
 meetingCode: {type:String, required:true},

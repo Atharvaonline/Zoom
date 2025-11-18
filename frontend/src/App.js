@@ -1,31 +1,39 @@
 import './App.css';
-import {Route,BrowserRouter as Router, Routes} from "react-router-dom";
+import {Route, BrowserRouter as Router, Routes} from "react-router-dom" 
 import LandingPage from './pages/landing';
-import Authentication from './pages/authentication';
-import { AuthProvider } from './contexts/AuthContext';
-import VideoMeetComponent from './pages/VideoMeet';
+import Authentication from './pages/authentication.jsx';
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import VideoMeetComponent from './pages/VideoMeet.jsx';
+import HomeComponent from './pages/home.jsx';
+import History from './pages/history.jsx';
 
 function App() {
   return (
-     <div className="App">
-
-    
-    <Router>
-      <AuthProvider>
+    <div className='app'>
+      <Router>
 
 
-          <Routes>
-            
-              <Route path="/" element={<LandingPage />} />
+        <AuthProvider>
 
-              <Route path='/auth' element={<Authentication/>}/>
+        <Routes>
+          <Route path="/" element={<LandingPage />}/>
+          <Route path="/auth" element={<Authentication />}/>
+          <Route path="/home" element={<HomeComponent/>}/>
+          <Route path="/history" element={<History />}/>
 
-              <Route path='/:url' element={<VideoMeetComponent/>}/>
-          </Routes>
-          </AuthProvider>
-    </Router>
-  </div>
+          <Route path="/:url" element={<VideoMeetComponent />}/>
+        </Routes>
+        </AuthProvider>
+
+
+
+      </Router>
+
+
+    </div>
+
+
   );
-}
+};
 
 export default App;
