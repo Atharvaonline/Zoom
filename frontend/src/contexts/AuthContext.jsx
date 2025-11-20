@@ -1,6 +1,6 @@
 import axios from "axios";
-import { createContext, useState } from "react";
-import server from "../environment"
+import { createContext, useMemo, useState } from "react";
+import server from "../environment";
 
 
 
@@ -9,9 +9,14 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
 
-    const client = axios.create({
-        baseURL: "${server.prod} api/v1/users"
-    })
+    const baseURL = useMemo(() => {
+        const env = process.env.NODE_ENV === "production" ? server.prod : server.dev;
+        return env.replace(/\/+$/, "");
+    }, []);
+
+    const client = useMemo(() => axios.create({
+        baseURL
+    }), [baseURL]);
 
     const [userData, setUserData] = useState(null);
 

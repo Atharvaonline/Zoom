@@ -2,10 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import HomeIcon from '@mui/icons-material/Home';
 
@@ -45,11 +42,11 @@ export default function History() {
     }
 
     return (
-        <div>
+        <div className='pageShell historyPage'>
 
             <IconButton onClick={() => {
                 routeTo("/home")
-            }}>
+            }} sx={{color:"#3BC7C3"}}>
                 <HomeIcon />
             </IconButton >
             {
@@ -61,13 +58,12 @@ export default function History() {
 
                             <Card key={i} variant="outlined">
 
-
                                 <CardContent>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                    <Typography sx={{ fontSize: 14, color: "#EAF6F6" }} gutterBottom>
                                         Code: {e.meetingCode}
                                     </Typography>
 
-                                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                    <Typography sx={{ mb: 1.5, color: "rgba(234, 246, 246, 0.7)" }}>
                                         Date: {formatDate(e.date)}
                                     </Typography>
 

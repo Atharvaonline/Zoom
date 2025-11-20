@@ -10,27 +10,22 @@ export default function LandingPage() {
 
                 </div>
                 <div className='navlist'>
-                    <p>Join as Guest</p>
-                    <p>Register</p>
-
-                    <div role="button">
-                        <p>Login</p>
-                        </div>
-                    </div>
+                    <Link to={"/home"}>Join as Guest</Link>
+                    <Link to={"/auth?mode=signup"}>Register</Link>
+                    <Link className="btn navCTA" to={"/auth"}>Login</Link>
+                </div>
 
              </nav>
              <div className="landingMainContainer">
              <div>
-                <h1><span style={{color: "#FF9839"}}>Connect </span> with your loved once</h1>
+                <h1><span className="accent">Connect</span> with your loved ones</h1>
                 
                 <p>Cover a distance by Apna video Call</p>
-                <div role="button">
-                    <Link to={"/auth"}>Get Started</Link>
-
-                   </div>
+                <br />
+                <Link className="btn" to={"/auth"}>Get Started</Link>
                 </div>
                 <div>
-                      <img src="/washim.png" alt=""/>
+                      <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=900&q=80" alt="Video call illustration"/>
                 </div>
               
 

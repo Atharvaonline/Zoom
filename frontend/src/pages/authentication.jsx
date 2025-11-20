@@ -19,7 +19,64 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const defaultTheme = createTheme();
+const deepTealTheme = createTheme({
+    palette: {
+        mode: 'dark',
+        primary: { main: '#134E5E' },
+        secondary: { main: '#0B3037' },
+        background: {
+            default: '#0B3037',
+            paper: 'rgba(11,48,55,0.92)'
+        },
+        text: {
+            primary: '#F2FBFB',
+            secondary: 'rgba(234, 246, 246, 0.72)'
+        }
+    },
+    shape: { borderRadius: 16 },
+    typography: {
+        fontFamily: '"Inter","Segoe UI","Space Grotesk",sans-serif',
+        button: { textTransform: 'none', fontWeight: 600 }
+    },
+    components: {
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    backgroundImage: 'linear-gradient(145deg, rgba(11,48,55,0.95), rgba(19,78,94,0.85))',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    boxShadow: '0 35px 70px rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(14px)'
+                }
+            }
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 12,
+                    paddingInline: 20,
+                    boxShadow: '0 15px 35px rgba(0,0,0,0.35)',
+                    transition: 'transform 220ms ease, box-shadow 220ms ease',
+                    '&:hover': {
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 25px 55px rgba(0,0,0,0.45)'
+                    }
+                }
+            }
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '& label': { color: 'rgba(234,246,246,0.6)' },
+                    '& .MuiOutlinedInput-root': {
+                        borderRadius: 12,
+                        '& fieldset': { borderColor: 'rgba(255,255,255,0.16)' },
+                        '&:hover fieldset': { borderColor: '#3BC7C3' }
+                    }
+                }
+            }
+        }
+    }
+});
 
 export default function Authentication() {
 
@@ -74,8 +131,8 @@ export default function Authentication() {
 
 
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
+        <ThemeProvider theme={deepTealTheme}>
+            <Grid container component="main" sx={{ height: '100vh', background: 'linear-gradient(135deg, #0B3037 0%, #134E5E 70%)' }}>
                 <CssBaseline />
                 <Grid
                     item
@@ -83,15 +140,14 @@ export default function Authentication() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+                        backgroundImage: 'linear-gradient(160deg, rgba(11,48,55,0.95), rgba(19,78,94,0.85)), url(https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80)',
                         backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        borderRight: '1px solid rgba(255,255,255,0.08)'
                     }}
                 />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={8} square>
                     <Box
                         sx={{
                             my: 8,

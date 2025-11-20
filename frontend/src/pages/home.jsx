@@ -21,8 +21,24 @@ import { AuthContext } from "../contexts/AuthContext";
         await addToUserHistory(meetingCode)
        navigate(`/${meetingCode}`)
     }
+    const primaryButtonSx = {
+        background: "linear-gradient(135deg, #0B3037 0%, #134E5E 70%, #1F7C91 100%)",
+        color: "#F2FBFB",
+        borderRadius: "12px",
+        px: 3,
+        fontWeight: 700,
+        textTransform: "none",
+        boxShadow: "0 15px 30px rgba(0,0,0,0.35)",
+        transition: "all 0.3s ease",
+        "&:hover": {
+            background: "linear-gradient(135deg, #134E5E 0%, #1F7C91 90%)",
+            boxShadow: "0 25px 45px rgba(0,0,0,0.45)",
+            transform: "translateY(-2px)"
+        }
+    };
+
     return(
-       <>
+       <div className="pageShell">
 
        <div className="navBar">
 
@@ -31,7 +47,7 @@ import { AuthContext } from "../contexts/AuthContext";
         </div>
 
         <div style={{display: "flex",alignItems: "center" }}>
-            <IconButton onClick={
+            <IconButton sx={{color: "#3BC7C3"}} onClick={
                 ()=>{
 
                     navigate("/history")
@@ -42,7 +58,7 @@ import { AuthContext } from "../contexts/AuthContext";
             </IconButton>
             <p>History</p>
 
-            <Button onClick={()=> {
+            <Button sx={primaryButtonSx} onClick={()=> {
                 localStorage.removeItem("token")
                 navigate("/auth")
             }}>
@@ -57,20 +73,20 @@ import { AuthContext } from "../contexts/AuthContext";
        <div className="meetContainer">
         <div className="leftPanel">
             <div>
-            <h2>Providing Quality Meow Call</h2>
+            <h2>Providing Quality Video Calling Service</h2>
             <div style={{display: "flex" , gap: "10px"}}>
-                <TextField onChange={e => setMeetingCode(e.target.value) } id="outline-basic" label="Meeting Code" variant="outlined"></TextField>
-                <Button variant="contained" onClick={handleJoinVideocall}>Join</Button>
+                <TextField onChange={e => setMeetingCode(e.target.value) } id="outline-basic" label="Meeting Code" variant="outlined" InputLabelProps={{style:{color:"#9fd7d5"}}} InputProps={{style:{color:"#f2fbfb"}}}></TextField>
+                <Button sx={primaryButtonSx} onClick={handleJoinVideocall}>Join</Button>
             </div>
         </div>
         </div>
 
         <div className="rightPanel">
-            <img src="/logo.png" alt="" />
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=80" alt="Video collaboration" />
         </div>
        </div>
        
-       </>
+       </div>
     )
 }
 
