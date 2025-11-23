@@ -22,15 +22,15 @@ import { useNavigate } from "react-router-dom";
 const deepTealTheme = createTheme({
     palette: {
         mode: 'dark',
-        primary: { main: '#134E5E' },
-        secondary: { main: '#0B3037' },
+        primary: { main: '#7B8FA1' },
+        secondary: { main: '#2A2E35' },
         background: {
-            default: '#0B3037',
-            paper: 'rgba(11,48,55,0.92)'
+            default: '#2A2E35',
+            paper: 'rgba(42,46,53,0.92)'
         },
         text: {
-            primary: '#F2FBFB',
-            secondary: 'rgba(234, 246, 246, 0.72)'
+            primary: '#E4E9EC',
+            secondary: 'rgba(228, 233, 236, 0.72)'
         }
     },
     shape: { borderRadius: 16 },
@@ -42,7 +42,7 @@ const deepTealTheme = createTheme({
         MuiPaper: {
             styleOverrides: {
                 root: {
-                    backgroundImage: 'linear-gradient(145deg, rgba(11,48,55,0.95), rgba(19,78,94,0.85))',
+                    backgroundImage: 'linear-gradient(145deg, rgba(42,46,53,0.95), rgba(123,143,161,0.85))',
                     border: '1px solid rgba(255,255,255,0.08)',
                     boxShadow: '0 35px 70px rgba(0,0,0,0.5)',
                     backdropFilter: 'blur(14px)'
@@ -66,11 +66,11 @@ const deepTealTheme = createTheme({
         MuiTextField: {
             styleOverrides: {
                 root: {
-                    '& label': { color: 'rgba(234,246,246,0.6)' },
+                    '& label': { color: 'rgba(228,233,236,0.6)' },
                     '& .MuiOutlinedInput-root': {
                         borderRadius: 12,
                         '& fieldset': { borderColor: 'rgba(255,255,255,0.16)' },
-                        '&:hover fieldset': { borderColor: '#3BC7C3' }
+                        '&:hover fieldset': { borderColor: '#7B8FA1' }
                     }
                 }
             }
@@ -132,7 +132,7 @@ export default function Authentication() {
 
     return (
         <ThemeProvider theme={deepTealTheme}>
-            <Grid container component="main" sx={{ height: '100vh', background: 'linear-gradient(135deg, #0B3037 0%, #134E5E 70%)' }}>
+            <Grid container component="main" sx={{ height: '100vh', background: 'linear-gradient(135deg, #2A2E35 0%, #7B8FA1 70%)' }}>
                 <CssBaseline />
                 <Grid
                     item
@@ -140,7 +140,7 @@ export default function Authentication() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'linear-gradient(160deg, rgba(11,48,55,0.95), rgba(19,78,94,0.85)), url(https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80)',
+                        backgroundImage: 'linear-gradient(160deg, rgba(42,46,53,0.95), rgba(123,143,161,0.85)), url(https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80)',
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',

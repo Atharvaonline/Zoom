@@ -22,8 +22,8 @@ import { AuthContext } from "../contexts/AuthContext";
        navigate(`/${meetingCode}`)
     }
     const primaryButtonSx = {
-        background: "linear-gradient(135deg, #0B3037 0%, #134E5E 70%, #1F7C91 100%)",
-        color: "#F2FBFB",
+        background: "linear-gradient(135deg, #2A2E35 0%, #7B8FA1 70%, #7B8FA1 100%)",
+        color: "#E4E9EC",
         borderRadius: "12px",
         px: 3,
         fontWeight: 700,
@@ -31,7 +31,7 @@ import { AuthContext } from "../contexts/AuthContext";
         boxShadow: "0 15px 30px rgba(0,0,0,0.35)",
         transition: "all 0.3s ease",
         "&:hover": {
-            background: "linear-gradient(135deg, #134E5E 0%, #1F7C91 90%)",
+            background: "linear-gradient(135deg, #7B8FA1 0%, #7B8FA1 90%)",
             boxShadow: "0 25px 45px rgba(0,0,0,0.45)",
             transform: "translateY(-2px)"
         }
@@ -43,11 +43,15 @@ import { AuthContext } from "../contexts/AuthContext";
        <div className="navBar">
 
         <div style={{display: "flex", alignItems: "center"}}>
-            <h3>ZooM Video call</h3>
+            <div className="logo">
+                <span className="logoZ">Z</span>
+                <span className="logoV">V</span>
+                <span className="logoText">Call</span>
+            </div>
         </div>
 
         <div style={{display: "flex",alignItems: "center" }}>
-            <IconButton sx={{color: "#3BC7C3"}} onClick={
+            <IconButton sx={{color: "#7B8FA1"}} onClick={
                 ()=>{
 
                     navigate("/history")
@@ -75,7 +79,7 @@ import { AuthContext } from "../contexts/AuthContext";
             <div>
             <h2>Providing Quality Video Calling Service</h2>
             <div style={{display: "flex" , gap: "10px"}}>
-                <TextField onChange={e => setMeetingCode(e.target.value) } id="outline-basic" label="Meeting Code" variant="outlined" InputLabelProps={{style:{color:"#9fd7d5"}}} InputProps={{style:{color:"#f2fbfb"}}}></TextField>
+                <TextField onChange={e => setMeetingCode(e.target.value) } id="outline-basic" label="Meeting Code" variant="outlined" InputLabelProps={{style:{color:"#7B8FA1"}}} InputProps={{style:{color:"#E4E9EC"}}}></TextField>
                 <Button sx={primaryButtonSx} onClick={handleJoinVideocall}>Join</Button>
             </div>
         </div>

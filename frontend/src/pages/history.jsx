@@ -46,7 +46,7 @@ export default function History() {
 
             <IconButton onClick={() => {
                 routeTo("/home")
-            }} sx={{color:"#3BC7C3"}}>
+            }} sx={{color:"#7B8FA1"}}>
                 <HomeIcon />
             </IconButton >
             {
@@ -59,11 +59,11 @@ export default function History() {
                             <Card key={i} variant="outlined">
 
                                 <CardContent>
-                                    <Typography sx={{ fontSize: 14, color: "#EAF6F6" }} gutterBottom>
+                                    <Typography sx={{ fontSize: 14, color: "#E4E9EC" }} gutterBottom>
                                         Code: {e.meetingCode}
                                     </Typography>
 
-                                    <Typography sx={{ mb: 1.5, color: "rgba(234, 246, 246, 0.7)" }}>
+                                    <Typography sx={{ mb: 1.5, color: "rgba(228, 233, 236, 0.7)" }}>
                                         Date: {formatDate(e.date)}
                                     </Typography>
 
